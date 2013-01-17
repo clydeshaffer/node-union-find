@@ -1,0 +1,27 @@
+{
+  "name": "node-union-find",
+  "version": "0.0.1",
+  "description": "An implementation of the union-find data structure",
+  "main": "unionFind.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/nickkthequick/union-find.git"
+  },
+  "keywords": [
+    "node",
+    "union-find",
+    "unionFind",
+    "kruskal",
+    "clustering"
+  ],
+  "devDependencies": {
+    "mocha": ">= 0.9.0"
+  },
+  "author": "Nicholas Kucharski",
+  "license": "MIT",
+  "readmeFilename": "README.md",
+  "gitHead": "e165dd8bb889a9fff813c49358b58d98ee22f25b"
+}
