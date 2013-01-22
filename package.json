@@ -1,6 +1,6 @@
 {
   "name": "node-union-find",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "An implementation of the union-find data structure",
   "main": "unionFind.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/nickkthequick/union-find.git"
+    "url": "git://github.com/nickkthequick/node-union-find.git"
   },
   "keywords": [
     "node",

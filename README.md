@@ -31,8 +31,8 @@ if(unionFindDataStructure.inSameGroup(1,2)) {
 ```
 Use UnionFind#find to get the node object, which will contain the group that it belongs to:
 ```javascript
-console.log("1 is in group " + unionFindDataStructure.find(1).group.leader);
-console.log("2 is in group " + unionFindDataStructure.find(2).group.leader);
+console.log("1 is in group " + unionFindDataStructure.find(1).getGroupLeader());
+console.log("2 is in group " + unionFindDataStructure.find(2).getGroupLeader());
 ```
 
 ## License

@@ -36,6 +36,10 @@ Node.prototype.getGroupSize = function () {
   return this.group.groupSize;
 };
 
+Node.prototype.getGroupLeader = function () {
+  return this.group.leader;
+};
+
 function UnionFind (nodes) {
   this.nodes = {};
   this.groupCount = nodes.length;
