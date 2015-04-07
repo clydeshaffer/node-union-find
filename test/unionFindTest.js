@@ -29,4 +29,19 @@ describe('unionFind', function () {
     assert.equal(false, testUnionFind.inSameGroup(0,2));
     assert.equal(testUnionFind.find(0).getGroupLeader(), testUnionFind.find(1).getGroupLeader());
   });
+
+  it('Groups of size == 2 unioned should now be in the same group and have the same leader', function () {
+    var testUnionFind = new UnionFind([0,1,2,3]);
+    testUnionFind.union(0,1);
+    testUnionFind.union(2,3);
+    testUnionFind.union(0,3);
+    assert.equal(true, testUnionFind.inSameGroup(0,1), "0 and 1 are not in the same group");
+    assert.equal(true, testUnionFind.inSameGroup(1,2), "1 and 2 are not in the same group");
+    assert.equal(true, testUnionFind.inSameGroup(2,3), "2 and 3 are not in the same group");
+
+    var supremeLeader = testUnionFind.find(0).getGroupLeader();
+    assert.equal(testUnionFind.find(1).getGroupLeader(), supremeLeader);
+    assert.equal(testUnionFind.find(2).getGroupLeader(), supremeLeader);
+    assert.equal(testUnionFind.find(3).getGroupLeader(), supremeLeader);
+  });
 });

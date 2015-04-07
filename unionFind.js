@@ -1,43 +1,40 @@
 function Group (node) {
-  this.nodes = [];
-
   this.leader = node;
-  this.nodes.push(node);
   this.groupSize = 1;
 };
 
 Group.prototype.mergeGroup = function (sourceGroup) {
   this.groupSize += sourceGroup.groupSize;
-  this.nodes = this.nodes.concat(sourceGroup.nodes);
-};
-
-Group.prototype.mergeIntoGroup = function (targetGroup, nodelist) {
-  for (var i = 0; i < this.nodes.length; i++) {
-    nodelist[this.nodes[i]].group = targetGroup;
-  }
+  sourceGroup.leader.group = this;  
 };
 
 function Node (node) {
   this.node = node;
-  this.group = new Group(node);
+  this.group = new Group(this);
 };
 
 Node.prototype.changeGroup = function (targetNode, nodelist) {
-  targetNode.group.mergeGroup(this.group);
-
-  this.group.mergeIntoGroup(targetNode.group, nodelist);
+  targetNode.getGroup().mergeGroup(this.getGroup());
 };
 
 Node.prototype.equals = function (otherNode) {
-  return this.group.leader == otherNode.group.leader;
+  return this.getGroup() == otherNode.getGroup();
 };
 
 Node.prototype.getGroupSize = function () {
-  return this.group.groupSize;
+  return this.getGroup().groupSize;
 };
 
 Node.prototype.getGroupLeader = function () {
-  return this.group.leader;
+  return this.getGroup().leader.node;
+}
+
+Node.prototype.getGroup = function() {
+  var group = this.group;
+  while (group.leader.group != group) {
+    group = group.leader.group;
+  }
+  return group;
 };
 
 function UnionFind (nodes) {
