@@ -50,6 +50,15 @@ UnionFind.prototype.initGroups = function (nodes) {
   }
 };
 
+UnionFind.prototype.addToGroups = function (nodes) {
+  for (var i = 0; i < nodes.length; i++) {
+    if(!this.nodes[nodes[i]]) {
+      this.nodes[nodes[i]] = new Node(nodes[i]);
+      this.groupCount++;
+    }
+  }
+};
+
 UnionFind.prototype.find = function (node) {
   return this.nodes[node];
 };

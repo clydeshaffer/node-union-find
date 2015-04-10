@@ -44,4 +44,19 @@ describe('unionFind', function () {
     assert.equal(testUnionFind.find(2).getGroupLeader(), supremeLeader);
     assert.equal(testUnionFind.find(3).getGroupLeader(), supremeLeader);
   });
+
+  it('Adding new nodes should increase the group count by the number of new nodes', function () {
+    var testUnionFind = new UnionFind([0,1,2]);
+    testUnionFind.addToGroups([2,3,4,5]);
+    assert.equal(6, testUnionFind.groupCount);
+  });
+
+  it('(Added) nodes unioned should now be in the same group and have the same leader', function () {
+    var testUnionFind = new UnionFind([0,1]);
+    testUnionFind.addToGroups([2]);
+    testUnionFind.union(0,1);
+    assert.equal(true, testUnionFind.inSameGroup(0,1));
+    assert.equal(false, testUnionFind.inSameGroup(0,2));
+    assert.equal(testUnionFind.find(0).getGroupLeader(), testUnionFind.find(1).getGroupLeader());
+  });
 });
